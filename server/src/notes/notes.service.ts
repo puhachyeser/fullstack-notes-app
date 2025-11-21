@@ -24,7 +24,7 @@ export class NotesService {
     async findOne(id: number): Promise<Note> {
         const note = await this.notesRepository.findOne({ where: { id } });
         if (!note) {
-            throw new NotFoundException(`Note with ID ${id} not found`);
+            throw new NotFoundException(`Note with ID ${id} was not found`);
         }
         return note;
     }
