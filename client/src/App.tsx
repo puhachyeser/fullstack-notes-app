@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useGetNotesQuery } from './features/notes/notesApi';
 
 function App() {
+  const { data: notes, error, isLoading } = useGetNotesQuery();
+
+  if (isLoading) return <div>Loading notes...</div>;
+  if (error) return <div>An error occurred while fetching notes</div>;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Notes List</h1>
+      {notes && notes.length > 0 ? (
+        <ul>
+          {notes.map(note => (
+            <li key={note.id}>{note.title}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No notes found</p>
+      )}
     </div>
   );
 }
