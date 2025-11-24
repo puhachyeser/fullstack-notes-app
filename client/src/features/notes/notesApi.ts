@@ -23,7 +23,7 @@ export const notesApi = createApi({
         updateNote: builder.mutation<Note, { id: number; data: UpdateNotePayload }>({
             query: ({ id, data }) => ({
                 url: `notes/${id}`,
-                method: "PUT",
+                method: "PATCH",
                 body: data,
             }),
             invalidatesTags: ["Notes"], 

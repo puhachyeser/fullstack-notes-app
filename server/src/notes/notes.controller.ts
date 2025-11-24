@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, HttpCode } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Patch, Delete, HttpCode } from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { CreateNoteDto } from './dto/create-note.dto';
 import { UpdateNoteDto } from './dto/update-note.dto';
@@ -23,7 +23,7 @@ export class NotesController {
         return this.notesService.findOne(+id);
     }
 
-    @Put(':id')
+    @Patch(':id')
     update(@Param('id') id: string, @Body() updateNoteDto: UpdateNoteDto): Promise<Note> {
         return this.notesService.update(+id, updateNoteDto);
     }
