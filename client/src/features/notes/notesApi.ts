@@ -3,7 +3,11 @@ import { Note, CreateNotePayload, UpdateNotePayload } from "./note-types";
 
 export const notesApi = createApi({
     reducerPath: "notesApi", 
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000/" }), 
+    baseQuery: fetchBaseQuery({ 
+        baseUrl: process.env.NODE_ENV === "production" 
+            ? process.env.REACT_APP_API_URL
+            : "http://localhost:3000/",
+    }), 
     tagTypes: ["Notes"], 
     endpoints: (builder) => ({
         getNotes: builder.query<Note[], void>({
