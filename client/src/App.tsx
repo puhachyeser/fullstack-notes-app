@@ -5,7 +5,7 @@ import CreateNoteForm from "./features/notes/CreateNoteForm";
 function App() {
   return (
     <Container maxWidth="md">
-      <Typography variant="h3" component="h1" gutterBottom sx={{ mt: 4 }}>
+      <Typography variant="h3" component="h1" gutterBottom sx={{ mt: 4 }} align="center">
         Notes App
       </Typography>
       <CreateNoteForm />

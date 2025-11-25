@@ -20,6 +20,7 @@ const CreateNoteForm = () => {
             setFormData(initialData);
         } catch (error) {
             console.error("Error while creating note:", error);
+            alert("Failed to create note. Check console.");
         }
     };
 
